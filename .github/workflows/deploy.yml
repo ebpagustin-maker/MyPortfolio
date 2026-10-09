@@ -20,6 +20,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -29,7 +32,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          
+
+      - name: Check project files
+        run: ls -la
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
